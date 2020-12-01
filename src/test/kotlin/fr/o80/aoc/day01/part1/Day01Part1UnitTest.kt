@@ -26,9 +26,9 @@ internal class Day01Part1UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d1_p1_1, result_d1_p1_1),
-                Arguments.of(input_d1_p1_2, result_d1_p1_2),
-                Arguments.of(input_d1_p1_3, result_d1_p1_3),
-                Arguments.of(exercise_d1_p1, -1)
+//                Arguments.of(input_d1_p1_2, result_d1_p1_2),
+//                Arguments.of(input_d1_p1_3, result_d1_p1_3),
+                Arguments.of(exercise_d1_p1, 838624)
             )
         }
 
