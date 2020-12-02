@@ -1,6 +1,7 @@
 package fr.o80.aoc.day02.part2
 
 import fr.o80.aoc.day02.Day02
+import fr.o80.aoc.day02.Day02Parser
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -15,10 +16,10 @@ internal class Day02Part2UnitTest {
     @MethodSource("provide")
     fun computeRequiredFull(input: String, expectedOutput: Int) {
         // when
-        val computedFuel = day.part2(day.parse2(input))
+        val validPasswordsCount = day.part2(Day02Parser.parse(input))
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, validPasswordsCount)
     }
 
     companion object {
@@ -26,9 +27,7 @@ internal class Day02Part2UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d2_p2_1, result_d2_p2_1),
-                Arguments.of(input_d2_p2_2, result_d2_p2_2),
-                Arguments.of(input_d2_p2_3, result_d2_p2_3),
-                Arguments.of(exercise_d2_p2, -1)
+                Arguments.of(exercise_d2_p2, 354)
             )
         }
 
