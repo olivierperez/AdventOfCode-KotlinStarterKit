@@ -1,7 +1,10 @@
 package fr.o80.aoc.day03.part2
 
 import fr.o80.aoc.day03.Day03
+import fr.o80.aoc.day03.Day03Parser
+import fr.o80.aoc.day03.multiplyTrees
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -13,12 +16,21 @@ internal class Day03Part2UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computeRequiredFull(input: String, expectedOutput: Int) {
+    fun computeRequiredFull(input: String, expectedOutput: Long) {
         // when
-        val computedFuel = day.part2(day.parse2(input))
+        val result = day.part2(Day03Parser.parse(input)).multiplyTrees()
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, result)
+    }
+
+    @Test
+    fun checks() {
+        // when
+        val validPasswordsCount = day.part2(Day03Parser.parse(exercise_d3_p2)).multiplyTrees()
+
+        // then
+        assertTrue(validPasswordsCount > 428316104L, "Result must be bigger than 428316104, but was $validPasswordsCount")
     }
 
     companion object {
@@ -26,9 +38,7 @@ internal class Day03Part2UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d3_p2_1, result_d3_p2_1),
-                Arguments.of(input_d3_p2_2, result_d3_p2_2),
-                Arguments.of(input_d3_p2_3, result_d3_p2_3),
-                Arguments.of(exercise_d3_p2, -1)
+                Arguments.of(exercise_d3_p2, 4723283400L)
             )
         }
 

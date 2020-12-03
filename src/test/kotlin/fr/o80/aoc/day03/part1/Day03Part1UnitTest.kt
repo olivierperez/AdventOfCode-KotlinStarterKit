@@ -1,6 +1,8 @@
 package fr.o80.aoc.day03.part1
 
 import fr.o80.aoc.day03.Day03
+import fr.o80.aoc.day03.Day03Parser
+import fr.o80.aoc.day03.countTrees
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -15,10 +17,10 @@ internal class Day03Part1UnitTest {
     @MethodSource("provide")
     fun computeRequiredFull(input: String, expectedOutput: Int) {
         // when
-        val computedFuel = day.part1(day.parse1(input))
+        val result = day.computePart1(Day03Parser.parse(input)).countTrees()
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, result)
     }
 
     companion object {
@@ -26,9 +28,7 @@ internal class Day03Part1UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d3_p1_1, result_d3_p1_1),
-                Arguments.of(input_d3_p1_2, result_d3_p1_2),
-                Arguments.of(input_d3_p1_3, result_d3_p1_3),
-                Arguments.of(exercise_d3_p1, -1)
+                Arguments.of(exercise_d3_p1, 187)
             )
         }
 
