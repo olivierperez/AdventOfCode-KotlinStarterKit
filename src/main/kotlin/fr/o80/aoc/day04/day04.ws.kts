@@ -1,1 +1,10 @@
 println("example => ${0 + 0}")
+
+val regex = "^#[0-9a-fA-F]{6}$".toRegex()
+val regexW = "^[a-zA-Z]$".toRegex()
+"#123".matches(regex)
+"#123fee".matches(regex)
+"#123feE".matches(regex)
+"9".matches(regexW)
+"f".matches(regexW)
+"G".matches(regexW)

@@ -2,20 +2,23 @@ package fr.o80.aoc.day04
 
 class Day04 {
 
-    fun part1(parsed: Int): Int {
-        TODO()
+    fun simpleValidityCount(passports: List<Passport>): Int {
+        return passports.count(::passportIsValid)
     }
 
-    fun parse1(input: String): Int {
-        TODO()
+    fun complexValidityCount(passports: List<Passport>): Int {
+        return passports.count(::passportIsFullyValid)
     }
 
-    fun part2(parsed: Int): Int {
-        TODO()
+    private fun passportIsValid(passport: Passport): Boolean {
+        return passport.countKeys() == 8 || passport.countKeys() == 7 && Key.COUNTRY_ID !in passport
     }
 
-    fun parse2(input: String): Int {
-        TODO()
+    private fun passportIsFullyValid(passport: Passport): Boolean {
+        return passportIsValid(passport) && Key.values().all { key ->
+            val value = passport[key]
+            key.isValid(value)
+        }
     }
 
 }
