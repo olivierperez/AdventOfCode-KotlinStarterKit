@@ -15,7 +15,7 @@ internal class Day05Part2UnitTest {
     @MethodSource("provide")
     fun computeRequiredFull(input: String, expectedOutput: Int) {
         // when
-        val computedFuel = day.part2(day.parse2(input))
+        val computedFuel = day.mySeatId(day.parseToSeatId(input))
 
         // then
         assertEquals(expectedOutput, computedFuel)
@@ -25,10 +25,7 @@ internal class Day05Part2UnitTest {
         @JvmStatic
         fun provide(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(input_d5_p2_1, result_d5_p2_1),
-                Arguments.of(input_d5_p2_2, result_d5_p2_2),
-                Arguments.of(input_d5_p2_3, result_d5_p2_3),
-                Arguments.of(exercise_d5_p2, -1)
+                Arguments.of(exercise_d5_p2, 682),
             )
         }
 

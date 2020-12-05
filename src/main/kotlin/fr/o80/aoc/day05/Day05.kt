@@ -1,21 +1,32 @@
 package fr.o80.aoc.day05
 
+import fr.o80.aoc.kit.minAndMaxOrNull
+
 class Day05 {
 
-    fun part1(parsed: Int): Int {
-        TODO()
+    fun highestSeatId(seatsId: Sequence<Int>): Int {
+        return seatsId.maxOrNull() ?: throw IllegalArgumentException("Quoi ?")
     }
 
-    fun parse1(input: String): Int {
-        TODO()
+    fun mySeatId(seatsId: Sequence<Int>): Int {
+        val (min, max) = seatsId.minAndMaxOrNull() ?: throw IllegalArgumentException("Pas de min ? Vraiment ?")
+
+        return (min..max).fold(0) { acc, elem -> acc xor elem } xor
+                seatsId.fold(0) { acc, elem -> acc xor elem }
     }
 
-    fun part2(parsed: Int): Int {
-        TODO()
-    }
-
-    fun parse2(input: String): Int {
-        TODO()
+    fun parseToSeatId(input: String): Sequence<Int> {
+        return input.lineSequence()
+            .map {
+                it
+                    .replace('F', '0')
+                    .replace('L', '0')
+                    .replace('B', '1')
+                    .replace('R', '1')
+            }
+            .map {
+                Integer.parseInt(it, 2)
+            }
     }
 
 }
