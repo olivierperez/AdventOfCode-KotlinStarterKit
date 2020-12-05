@@ -1,8 +1,8 @@
 package fr.o80.aoc.kit
 
 class Table<T>(
-    private val width: Int,
-    private val height: Int
+    val width: Int,
+    val height: Int
 ) {
 
     private val data = MutableList<T?>(width * height) { null }
