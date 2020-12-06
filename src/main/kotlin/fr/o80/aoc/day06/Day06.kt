@@ -2,20 +2,30 @@ package fr.o80.aoc.day06
 
 class Day06 {
 
-    fun part1(parsed: Int): Int {
-        TODO()
+    fun part1(groups: List<String>): List<Int> {
+        return groups.map(::countEachYes)
     }
 
-    fun parse1(input: String): Int {
-        TODO()
+    fun part2(groups: List<String>): List<Int> {
+        return groups.map(::countMatchingYes)
     }
 
-    fun part2(parsed: Int): Int {
-        TODO()
+    private fun countEachYes(group: String): Int {
+        val yes = mutableSetOf<Char>()
+        group.lines()
+            .forEach { line ->
+                line.forEach { c -> yes.add(c) }
+            }
+        return yes.size
     }
 
-    fun parse2(input: String): Int {
-        TODO()
+    private fun countMatchingYes(group: String): Int {
+        val yes = "azertyuiopqsdfghjklmwxcvbn".toMutableList()
+        group.lines()
+            .forEach { line ->
+                yes.removeIf { it !in line }
+            }
+        return yes.size
     }
 
 }

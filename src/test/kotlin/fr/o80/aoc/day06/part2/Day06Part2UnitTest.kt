@@ -1,6 +1,7 @@
 package fr.o80.aoc.day06.part2
 
 import fr.o80.aoc.day06.Day06
+import fr.o80.aoc.day06.Day06Parser
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -15,7 +16,7 @@ internal class Day06Part2UnitTest {
     @MethodSource("provide")
     fun computeRequiredFull(input: String, expectedOutput: Int) {
         // when
-        val computedFuel = day.part2(day.parse2(input))
+        val computedFuel = day.part2(Day06Parser.parse(input)).sum()
 
         // then
         assertEquals(expectedOutput, computedFuel)
@@ -26,9 +27,7 @@ internal class Day06Part2UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d6_p2_1, result_d6_p2_1),
-                Arguments.of(input_d6_p2_2, result_d6_p2_2),
-                Arguments.of(input_d6_p2_3, result_d6_p2_3),
-                Arguments.of(exercise_d6_p2, -1)
+                Arguments.of(exercise_d6_p2, 3382)
             )
         }
 
