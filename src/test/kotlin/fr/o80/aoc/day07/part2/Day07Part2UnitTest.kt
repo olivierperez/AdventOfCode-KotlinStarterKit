@@ -1,7 +1,8 @@
 package fr.o80.aoc.day07.part2
 
 import fr.o80.aoc.day07.Day07
-import org.junit.jupiter.api.Assertions.*
+import fr.o80.aoc.day07.Day07Parser
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -11,14 +12,14 @@ internal class Day07Part2UnitTest {
 
     private val day = Day07()
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Should count how many bags are within Shiny gold one")
     @MethodSource("provide")
-    fun computeRequiredFull(input: String, expectedOutput: Int) {
+    fun countBagsInShinyGoldBag(input: String, expectedOutput: Int) {
         // when
-        val computedFuel = day.part2(day.parse2(input))
+        val bagsCount = day.countBagsInShinyGoldBag(Day07Parser.parse(input))
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, bagsCount)
     }
 
     companion object {
@@ -26,9 +27,7 @@ internal class Day07Part2UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d7_p2_1, result_d7_p2_1),
-                Arguments.of(input_d7_p2_2, result_d7_p2_2),
-                Arguments.of(input_d7_p2_3, result_d7_p2_3),
-                Arguments.of(exercise_d7_p2, -1)
+                Arguments.of(exercise_d7_p2, 34862),
             )
         }
 
