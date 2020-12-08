@@ -1,7 +1,8 @@
 package fr.o80.aoc.day08.part2
 
 import fr.o80.aoc.day08.Day08
-import org.junit.jupiter.api.Assertions.*
+import fr.o80.aoc.day08.Day08Parser
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -13,12 +14,12 @@ internal class Day08Part2UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computeRequiredFull(input: String, expectedOutput: Int) {
+    fun shouldFixInfiniteLoop(input: String, expectedOutput: Int) {
         // when
-        val computedFuel = day.part2(day.parse2(input))
+        val fixedAccumulator = day.fixInfiniteLoop(Day08Parser.parse(input))
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, fixedAccumulator)
     }
 
     companion object {
@@ -26,9 +27,25 @@ internal class Day08Part2UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d8_p2_1, result_d8_p2_1),
-                Arguments.of(input_d8_p2_2, result_d8_p2_2),
-                Arguments.of(input_d8_p2_3, result_d8_p2_3),
-                Arguments.of(exercise_d8_p2, -1)
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
+                Arguments.of(exercise_d8_p2, 1358),
             )
         }
 

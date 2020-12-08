@@ -1,4 +1,12 @@
 package fr.o80.aoc.day08.part2
 
-const val result_d8_p2_1 = 2
-const val input_d8_p2_1 = "14"
+const val result_d8_p2_1 = 8
+const val input_d8_p2_1 = """nop +0
+acc +1
+jmp +4
+acc +3
+jmp -3
+acc -99
+acc +1
+jmp -4
+acc +6"""

@@ -1,6 +1,7 @@
 package fr.o80.aoc.day08.part1
 
 import fr.o80.aoc.day08.Day08
+import fr.o80.aoc.day08.Day08Parser
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -13,12 +14,12 @@ internal class Day08Part1UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computeRequiredFull(input: String, expectedOutput: Int) {
+    fun shouldfindInfiniteLoop(input: String, expectedOutput: Int) {
         // when
-        val computedFuel = day.part1(day.parse1(input))
+        val accumulatorBeforeInfiniteLoop = day.findInfiniteLoop(Day08Parser.parse(input))
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, accumulatorBeforeInfiniteLoop)
     }
 
     companion object {
@@ -26,9 +27,7 @@ internal class Day08Part1UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d8_p1_1, result_d8_p1_1),
-                Arguments.of(input_d8_p1_2, result_d8_p1_2),
-                Arguments.of(input_d8_p1_3, result_d8_p1_3),
-                Arguments.of(exercise_d8_p1, -1)
+                Arguments.of(exercise_d8_p1, 1337)
             )
         }
 
