@@ -1,6 +1,7 @@
 package fr.o80.aoc.day09.part2
 
 import fr.o80.aoc.day09.Day09
+import fr.o80.aoc.day09.Day09Parser
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -13,25 +14,22 @@ internal class Day09Part2UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computeRequiredFull(input: String, expectedOutput: Int) {
+    fun computePart2(input: String, preamble: Long, expectedOutput: Long) {
         // when
-        val computedFuel = day.part2(day.parse2(input))
+        val sumOfMinMaxFromRange = day.findRangeToSumToThePart1(preamble, Day09Parser.parse(input))
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, sumOfMinMaxFromRange)
     }
 
     companion object {
         @JvmStatic
         fun provide(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(input_d9_p2_1, result_d9_p2_1),
-                Arguments.of(input_d9_p2_2, result_d9_p2_2),
-                Arguments.of(input_d9_p2_3, result_d9_p2_3),
-                Arguments.of(exercise_d9_p2, -1)
+                Arguments.of(input_d9_p2_1, input_d9_p2_1_preamble, result_d9_p2_1),
+                Arguments.of(exercise_d9_p2, 25L, 76096372L)
             )
         }
-
     }
 
 }

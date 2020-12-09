@@ -1,7 +1,8 @@
 package fr.o80.aoc.day09.part1
 
 import fr.o80.aoc.day09.Day09
-import org.junit.jupiter.api.Assertions.*
+import fr.o80.aoc.day09.Day09Parser
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -13,25 +14,35 @@ internal class Day09Part1UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computeRequiredFull(input: String, expectedOutput: Int) {
+    fun computePart1(input: String, preamble: Long, expectedOutput: Long) {
         // when
-        val computedFuel = day.part1(day.parse1(input))
+        val number = day.findNumberThatIsNotSumOfPreamble(preamble, Day09Parser.parse(input))
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, number)
     }
 
     companion object {
         @JvmStatic
         fun provide(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(input_d9_p1_1, result_d9_p1_1),
-                Arguments.of(input_d9_p1_2, result_d9_p1_2),
-                Arguments.of(input_d9_p1_3, result_d9_p1_3),
-                Arguments.of(exercise_d9_p1, -1)
+                Arguments.of(input_d9_p1_1, input_d9_p1_1_preamble, result_d9_p1_1),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
+                Arguments.of(exercise_d9_p1, 25L, 556543474),
             )
         }
-
     }
 
 }
