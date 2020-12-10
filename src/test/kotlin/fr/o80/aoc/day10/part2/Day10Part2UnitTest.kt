@@ -13,7 +13,7 @@ internal class Day10Part2UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computeRequiredFull(input: String, expectedOutput: Int) {
+    fun computeRequiredFull(input: String, expectedOutput: Long) {
         // when
         val computedFuel = day.part2(day.parse2(input))
 
@@ -28,7 +28,9 @@ internal class Day10Part2UnitTest {
                 Arguments.of(input_d10_p2_1, result_d10_p2_1),
                 Arguments.of(input_d10_p2_2, result_d10_p2_2),
                 Arguments.of(input_d10_p2_3, result_d10_p2_3),
-                Arguments.of(exercise_d10_p2, -1)
+                Arguments.of(input_d10_p2_4, result_d10_p2_4),
+                Arguments.of(input_d10_p2_5, result_d10_p2_5),
+                Arguments.of(exercise_d10_p2, 42313823813632)
             )
         }
 
