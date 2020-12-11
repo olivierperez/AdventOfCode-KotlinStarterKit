@@ -8,8 +8,8 @@ package fr.o80.aoc.kit.rangequery
 
     val rangeQuery = RangeQuery(
         key,
-        applyMutation = { a, b -> a xor b },
-        unapplyMutation = { b, a -> a xor b }
+        applyMutation = { a, b -> a + b },
+        unapplyMutation = { a, b -> b - a }
     )
 
     println(rangeQuery
@@ -18,29 +18,35 @@ package fr.o80.aoc.kit.rangequery
     )
     ```
  */
-class RangeQuery(
-    key: List<Int>,
-    private val applyMutation: (a: Int, b: Int) -> Int,
-    private val unapplyMutation: (b: Int, a: Int) -> Int
+class RangeQuery<T: Comparable<T>>(
+    key: List<T>,
+    private val initial: T,
+    private val applyMutation: (a: T, b: T) -> T,
+    private val unapplyMutation: (a: T, b: T) -> T
 ) {
 
-    private val memo: MutableMap<IntRange, Int> = mutableMapOf()
-    private val preCalculatedMutations = preCalculate(key)
+    private val memo: MutableMap<IntRange, T> = mutableMapOf()
 
-    fun compute(mutations: Iterable<IntRange>): List<Int> {
+    val preCalculatedMutations: List<T> = preCalculate(key)
+
+    fun compute(range: IntRange): T {
+        return compute(range, preCalculatedMutations)
+    }
+
+    fun compute(mutations: Iterable<IntRange>): List<T> {
         return mutations
             .map { range -> compute(range, preCalculatedMutations) }
     }
 
-    private fun preCalculate(key: List<Int>): List<Int> {
-        return key.runningFold(0) { acc, elem -> applyMutation(acc, elem) }
+    private fun preCalculate(key: List<T>): List<T> {
+        return key.runningFold(initial) { acc, elem -> applyMutation(acc, elem) }
     }
 
-    private fun compute(range: IntRange, list: List<Int>): Int {
+    private fun compute(range: IntRange, list: List<T>): T {
         if (memo.containsKey(range)) {
             return memo.getValue(range)
         }
-        return unapplyMutation(list[range.last + 1], list[range.first])
+        return unapplyMutation(list[range.first], list[range.last + 1])
             .also { result -> memo[range] = result }
     }
 
