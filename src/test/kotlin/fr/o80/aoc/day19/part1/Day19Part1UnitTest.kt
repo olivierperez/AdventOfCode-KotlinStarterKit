@@ -13,12 +13,12 @@ internal class Day19Part1UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computeRequiredFull(input: String, expectedOutput: Int) {
+    fun computePart1(input: String, expectedOutput: Int) {
         // when
-        val computedFuel = day.part1(day.parse1(input))
+        val result = day.part1(day.parse1(input))
 
         // then
-        assertEquals(expectedOutput, computedFuel)
+        assertEquals(expectedOutput, result)
     }
 
     companion object {
@@ -28,7 +28,7 @@ internal class Day19Part1UnitTest {
                 Arguments.of(input_d19_p1_1, result_d19_p1_1),
                 Arguments.of(input_d19_p1_2, result_d19_p1_2),
                 Arguments.of(input_d19_p1_3, result_d19_p1_3),
-                Arguments.of(exercise_d19_p1, -1)
+                Arguments.of(exercise_d19_p1, -1),
             )
         }
 
