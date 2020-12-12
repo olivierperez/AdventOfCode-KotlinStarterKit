@@ -1,4 +1,4 @@
-package fr.o80.aoc.kit
+package fr.o80.aoc.kit.table
 
 class Table<T>(
     val width: Int,
@@ -27,8 +27,27 @@ class Table<T>(
     }
 
     private fun checkBounds(x: Int, y: Int) {
-        if (x < 0 || y < 0 || x > width - 1 || y > height - 1) {
+        if (isOutOfBounds(x, y)) {
             throw IndexOutOfBoundsException("Cell [$x;$y] out of ($width, $height)")
+        }
+    }
+
+    fun getOrNull(x: Int, y: Int): T? =
+        if (isOutOfBounds(x, y)) null
+        else data[x + y * width]
+
+    private fun isOutOfBounds(x: Int, y: Int) =
+        x < 0 || y < 0 || x > width - 1 || y > height - 1
+
+    fun count(predicate: (T?) -> Boolean): Int {
+        return data.count(predicate)
+    }
+
+    fun forEachIndexed(block: (Int, Int, T?) -> Unit) {
+        for (y in 0 until height) {
+            for (x in 0 until width) {
+                block(x, y, get(x, y))
+            }
         }
     }
 

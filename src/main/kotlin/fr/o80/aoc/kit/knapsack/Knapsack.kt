@@ -1,6 +1,6 @@
 package fr.o80.aoc.kit.knapsack
 
-import fr.o80.aoc.kit.Table
+import fr.o80.aoc.kit.table.Table
 
 /**
     // Example
