@@ -1,5 +1,9 @@
 package fr.o80.aoc.day12.part1
 
-const val result_d12_p1_1 = 2
-const val input_d12_p1_1 = """14"""
+const val result_d12_p1_1 = 25
+const val input_d12_p1_1 = """F10
+N3
+F7
+R90
+F11"""
 

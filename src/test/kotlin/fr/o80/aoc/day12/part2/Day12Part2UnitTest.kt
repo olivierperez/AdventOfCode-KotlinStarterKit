@@ -1,7 +1,7 @@
 package fr.o80.aoc.day12.part2
 
-import fr.o80.aoc.day12.Day12
-import org.junit.jupiter.api.Assertions.*
+import fr.o80.aoc.day12.Day12Part2
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -9,7 +9,7 @@ import java.util.stream.Stream
 
 internal class Day12Part2UnitTest {
 
-    private val day = Day12()
+    private val day = Day12Part2()
 
     @ParameterizedTest
     @MethodSource("provide")
@@ -26,9 +26,7 @@ internal class Day12Part2UnitTest {
         fun provide(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(input_d12_p2_1, result_d12_p2_1),
-                Arguments.of(input_d12_p2_2, result_d12_p2_2),
-                Arguments.of(input_d12_p2_3, result_d12_p2_3),
-                Arguments.of(exercise_d12_p2, -1),
+                Arguments.of(exercise_d12_p2, 23960),
             )
         }
 
