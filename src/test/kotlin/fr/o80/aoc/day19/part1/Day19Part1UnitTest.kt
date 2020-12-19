@@ -1,7 +1,8 @@
 package fr.o80.aoc.day19.part1
 
 import fr.o80.aoc.day19.Day19
-import org.junit.jupiter.api.Assertions.*
+import fr.o80.aoc.day19.Day19Parser
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -13,9 +14,9 @@ internal class Day19Part1UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computePart1(input: String, expectedOutput: Int) {
+    fun computePart1(rules: String, messages: String, expectedOutput: Int) {
         // when
-        val result = day.part1(day.parse1(input))
+        val result = day.part1(Day19Parser.parse(rules, messages))
 
         // then
         assertEquals(expectedOutput, result)
@@ -25,10 +26,8 @@ internal class Day19Part1UnitTest {
         @JvmStatic
         fun provide(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(input_d19_p1_1, result_d19_p1_1),
-                Arguments.of(input_d19_p1_2, result_d19_p1_2),
-                Arguments.of(input_d19_p1_3, result_d19_p1_3),
-                Arguments.of(exercise_d19_p1, -1),
+                Arguments.of(input_d19_p1_1_rules, input_d19_p1_1_messages, result_d19_p1_1),
+                Arguments.of(exercise_d19_p1_rules, exercise_d19_p1_messages, 147),
             )
         }
 
