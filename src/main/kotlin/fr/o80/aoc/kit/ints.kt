@@ -31,3 +31,19 @@ fun <T: Comparable<T>> Iterator<T>.minAndMaxOrNull(): Pair<T, T>? {
 fun String.parseInt(radix: Int): Long {
     return java.lang.Long.parseLong(this, radix)
 }
+
+fun String.tryToInt(): Int? {
+    return try {
+        this.toInt()
+    } catch (e: Exception) {
+        null
+    }
+}
+
+fun String.tryToLong(): Long? {
+    return try {
+        this.toLong()
+    } catch (e: Exception) {
+        null
+    }
+}
