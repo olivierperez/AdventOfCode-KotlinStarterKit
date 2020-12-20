@@ -37,7 +37,7 @@ class Table<T>(
         else data[x + y * width]
 
     private fun isOutOfBounds(x: Int, y: Int) =
-        x < 0 || y < 0 || x > width - 1 || y > height - 1
+        x < 0 || y < 0 || x >= width|| y >= height
 
     fun count(predicate: (T?) -> Boolean): Int {
         return data.count(predicate)
@@ -49,6 +49,42 @@ class Table<T>(
                 block(x, y, get(x, y))
             }
         }
+    }
+
+    fun clockwiseRotated(): Table<T> {
+        val newTable = Table<T>(height, width)
+
+        for (x in 0 until width) {
+            for (y in 0 until height) {
+                newTable[height - y - 1, x] = get(x, y)!!
+            }
+        }
+
+        return newTable
+    }
+
+    fun horizontalFlip(): Table<T> {
+        val newTable = Table<T>(width, height)
+
+        for (x in 0 until width) {
+            for (y in 0 until height) {
+                newTable[x, y] = this[width - x - 1, y]!!
+            }
+        }
+
+        return newTable
+    }
+
+    fun verticalFlip(): Table<T> {
+        val newTable = Table<T>(width, height)
+
+        for (x in 0 until width) {
+            for (y in 0 until height) {
+                newTable[x, y] = this[x, height - y -1]!!
+            }
+        }
+
+        return newTable
     }
 
 }

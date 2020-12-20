@@ -1,6 +1,6 @@
 package fr.o80.aoc.day14
 
-import fr.o80.aoc.kit.parseInt
+import fr.o80.aoc.kit.parseLong
 
 sealed class Instruction
 
@@ -43,8 +43,8 @@ class Day14 {
             state
         }
         is MaskInstruction -> {
-            state.andMask = mask.replace('X', '1').parseInt(2)
-            state.orMask = mask.replace('X', '0').parseInt(2)
+            state.andMask = mask.replace('X', '1').parseLong(2)
+            state.orMask = mask.replace('X', '0').parseLong(2)
             state
         }
     }
@@ -59,8 +59,8 @@ class Day14 {
                 state
             }
             is MaskInstruction -> {
-                state.andMask = mask.replace('0', '1').replace('X', '0').parseInt(2)
-                state.orMask = mask.replace('X', '0').parseInt(2)
+                state.andMask = mask.replace('0', '1').replace('X', '0').parseLong(2)
+                state.orMask = mask.replace('X', '0').parseLong(2)
                 state.addrMask = mask.replace('1', '0')
                 state
             }

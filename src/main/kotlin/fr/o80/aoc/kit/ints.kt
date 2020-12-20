@@ -28,7 +28,7 @@ fun <T: Comparable<T>> Iterator<T>.minAndMaxOrNull(): Pair<T, T>? {
     }
 }
 
-fun String.parseInt(radix: Int): Long {
+fun String.parseLong(radix: Int): Long {
     return java.lang.Long.parseLong(this, radix)
 }
 
