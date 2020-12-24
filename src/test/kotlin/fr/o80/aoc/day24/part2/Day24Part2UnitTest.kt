@@ -13,9 +13,9 @@ internal class Day24Part2UnitTest {
 
     @ParameterizedTest
     @MethodSource("provide")
-    fun computePart2(input: String, expectedOutput: Int) {
+    fun computePart2(input: String, days: Int, expectedOutput: Int) {
         // when
-        val result = day.part2(day.parse2(input))
+        val result = day.part2(days, day.parse2(input))
 
         // then
         assertEquals(expectedOutput, result)
@@ -25,10 +25,12 @@ internal class Day24Part2UnitTest {
         @JvmStatic
         fun provide(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(input_d24_p2_1, result_d24_p2_1),
-                Arguments.of(input_d24_p2_2, result_d24_p2_2),
-                Arguments.of(input_d24_p2_3, result_d24_p2_3),
-                Arguments.of(exercise_d24_p2, -1),
+                Arguments.of(input_d24_p2_1, 1, 15),
+                Arguments.of(input_d24_p2_1, 2, 12),
+                Arguments.of(input_d24_p2_1, 3, 25),
+                Arguments.of(input_d24_p2_1, 4, 14),
+                Arguments.of(input_d24_p2_1, 100, 2208),
+                Arguments.of(exercise_d24_p2, 100, 3700),
             )
         }
 

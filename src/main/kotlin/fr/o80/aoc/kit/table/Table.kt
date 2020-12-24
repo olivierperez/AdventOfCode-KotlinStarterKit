@@ -2,10 +2,11 @@ package fr.o80.aoc.kit.table
 
 class Table<T>(
     val width: Int,
-    val height: Int
+    val height: Int,
+    init: (index: Int) -> T? = { null }
 ) {
 
-    private val data = MutableList<T?>(width * height) { null }
+    private val data = MutableList(width * height, init)
 
     operator fun get(x: Int, y: Int): T? {
         checkBounds(x, y)
@@ -17,10 +18,10 @@ class Table<T>(
         data[x + y * width] = value
     }
 
-    fun debug() {
+    fun debug(toString: (T?) -> String = { it.toString() }) {
         for (y in 0 until height) {
             for (x in 0 until width) {
-                print(" " + this[x, y]!!)
+                print(" " + toString(this[x, y]!!))
             }
             println()
         }
@@ -37,7 +38,7 @@ class Table<T>(
         else data[x + y * width]
 
     private fun isOutOfBounds(x: Int, y: Int) =
-        x < 0 || y < 0 || x >= width|| y >= height
+        x < 0 || y < 0 || x >= width || y >= height
 
     fun count(predicate: (T?) -> Boolean): Int {
         return data.count(predicate)
@@ -80,7 +81,7 @@ class Table<T>(
 
         for (x in 0 until width) {
             for (y in 0 until height) {
-                newTable[x, y] = this[x, height - y -1]!!
+                newTable[x, y] = this[x, height - y - 1]!!
             }
         }
 
