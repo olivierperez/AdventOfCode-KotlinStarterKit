@@ -2,19 +2,19 @@ package fr.o80.aoc.day07
 
 class Day07 {
 
-    fun part1(parsed: Int): Int {
+    fun parse1(input: String): List<Int> {
         TODO()
     }
 
-    fun parse1(input: String): Int {
+    fun part1(parsed: List<Int>): Int {
         TODO()
     }
 
-    fun part2(parsed: Int): Int {
+    fun parse2(input: String): List<Int> {
         TODO()
     }
 
-    fun parse2(input: String): Int {
+    fun part2(parsed: List<Int>): Int {
         TODO()
     }
 
